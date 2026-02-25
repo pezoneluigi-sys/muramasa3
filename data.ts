@@ -551,18 +551,8 @@ export const menuData: MenuSectionData[] = [
     bgClass: 'bg-sage-50',
     items: [
       {
-        name: 'Asahi Super Dry 50cl',
-        price: '€ 6,00',
-        allergens: ['gluten']
-      },
-      {
         name: 'Asahi 33cl',
         price: '€ 4,00',
-        allergens: ['gluten']
-      },
-      {
-        name: 'Sapporo 50cl',
-        price: '€ 6,50',
         allergens: ['gluten']
       },
       {
@@ -570,12 +560,12 @@ export const menuData: MenuSectionData[] = [
         price: '€ 4,00',
       },
       {
-        name: 'Acqua Naturale 75cl',
-        price: '€ 2,50',
+        name: 'Acqua Liscia 500ml',
+        price: '€ 2,00',
       },
       {
-        name: 'Coca Cola / Fanta',
-        price: '€ 3,00',
+        name: 'Acqua Frizzante 500ml',
+        price: '€ 2,00',
       }
     ]
   }
