@@ -556,6 +556,11 @@ export const menuData: MenuSectionData[] = [
         allergens: ['gluten']
       },
       {
+        name: 'Kirin 33cl',
+        price: '€ 4,00',
+        allergens: ['gluten']
+      },
+      {
         name: 'Sake 200ml',
         price: '€ 4,00',
       },
