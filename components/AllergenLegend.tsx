@@ -26,9 +26,12 @@ export const AllergenLegend: React.FC = () => {
             ))}
         </div>
         
-        <div className="mt-8 text-center border-t border-wood-200 pt-6">
+        <div className="mt-8 text-center border-t border-wood-200 pt-6 space-y-2">
              <p className="text-xs text-wood-500">
                 * Le preparazioni avvengono in un unico ambiente, pertanto non si può escludere completamente il rischio di contaminazione crociata.
+            </p>
+             <p className="text-xs text-wood-500">
+                * Tutte le preparazioni possono contenere tracce di soia.
             </p>
         </div>
       </div>
