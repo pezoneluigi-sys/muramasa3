@@ -50,7 +50,7 @@ export const navigationItems: NavigationItem[] = [
   { id: 'section-antipasti', label: 'Antipasti', icon: 'tapas' },
   { id: 'section-tartare', label: 'Tartare', icon: 'set_meal' },
   { id: 'section-sashimi', label: 'Sashimi', icon: 'phishing' },
-  { id: 'section-nigiri', label: 'Nigiri', icon: 'rice_bowl' },
+  { id: 'section-nigiri', label: 'Nigiri', icon: 'radio_button_checked' },
   { id: 'section-temaki', label: 'Temaki', icon: 'icecream' },
   { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
   { id: 'section-signature', label: 'Signature', icon: 'diamond' },
@@ -283,7 +283,7 @@ export const menuData: MenuSectionData[] = [
   {
     id: 'section-nigiri',
     title: 'Nigiri & Hosomaki',
-    icon: 'rice_bowl',
+    icon: 'radio_button_checked',
     bgClass: 'bg-sage-50',
     items: [
       {
