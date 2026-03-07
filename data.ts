@@ -115,15 +115,15 @@ export const menuData: MenuSectionData[] = [
         allergens: ['sesame', 'soy', 'gluten']
       },
       {
-        name: 'Crispy Gyoza Pollo',
+        name: 'Gyoza Pollo',
         price: '€ 5,00',
-        description: 'Ravioli croccanti ripieni di pollo.',
+        description: 'Ravioli ripieni di pollo.',
         allergens: ['gluten', 'soy', 'sesame']
       },
       {
-        name: 'Crispy Gyoza Veg',
+        name: 'Gyoza Veg',
         price: '€ 5,00',
-        description: 'Ravioli croccanti ripieni di verdure.',
+        description: 'Ravioli ripieni di verdure.',
         isVegetarian: true,
         allergens: ['gluten', 'soy', 'sesame']
       },
