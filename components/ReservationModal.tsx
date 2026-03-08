@@ -8,6 +8,7 @@ interface ReservationModalProps {
 
 export const ReservationModal: React.FC<ReservationModalProps> = ({ isOpen, onClose }) => {
   const [name, setName] = useState('');
+  const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [seats, setSeats] = useState(1);
   const [error, setError] = useState('');
@@ -17,6 +18,10 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({ isOpen, onCl
   const validateReservation = (): boolean => {
     if (!name.trim()) {
       setError('Inserisci il tuo nome.');
+      return false;
+    }
+    if (!date) {
+      setError('Seleziona una data.');
       return false;
     }
     if (!time.trim()) {
@@ -33,10 +38,12 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({ isOpen, onCl
     const chair = '\uD83E\uDE91'; // 🪑
     const user = '\uD83D\uDC64'; // 👤
     const clock = '\uD83D\uDD52'; // 🕒
+    const calendar = '\uD83D\uDCC5'; // 📅
 
     let message = `*NUOVA PRENOTAZIONE SGABELLO* ${chair}\n\n`;
     message += `${user} *Nome:* ${name}\n`;
     message += `${chair} *Posti:* ${seats}\n`;
+    message += `${calendar} *Data:* ${date}\n`;
     message += `${clock} *Orario:* ${time}\n`;
     message += `\n----------------------------\n`;
     message += `Richiesta prenotazione per consumazione sul posto.`;
@@ -106,6 +113,17 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({ isOpen, onCl
                   value={name}
                   onChange={(e) => { setName(e.target.value); setError(''); }}
                   placeholder="Il tuo nome"
+                  className="w-full bg-wood-50 border-wood-200 rounded-lg focus:ring-sage-500 focus:border-sage-500 text-wood-900"
+                />
+            </div>
+
+            {/* Data */}
+            <div>
+                <label className="block text-xs uppercase font-bold text-wood-500 mb-1">Data *</label>
+                <input 
+                  type="date" 
+                  value={date}
+                  onChange={(e) => { setDate(e.target.value); setError(''); }}
                   className="w-full bg-wood-50 border-wood-200 rounded-lg focus:ring-sage-500 focus:border-sage-500 text-wood-900"
                 />
             </div>

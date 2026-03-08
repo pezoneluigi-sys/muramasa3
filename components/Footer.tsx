@@ -42,6 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               <p className="mb-2 text-sm opacity-80">Dal Mercoledì alla Domenica</p>
               <p className="text-lg font-serif text-white mb-4 leading-tight">18:00 - 24:00</p>
               <p className="text-sm opacity-60">Via Salvo D'Acquisto 21, Parete (CE)</p>
+              <p className="text-sm opacity-60 mt-1">Tel: 352 009 8737</p>
             </div>
 
             <div className="flex flex-col items-center md:items-end justify-center">
