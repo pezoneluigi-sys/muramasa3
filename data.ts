@@ -47,13 +47,13 @@ export const ALLERGEN_MAP: Record<string, { icon: string; label: string }> = {
 
 export const navigationItems: NavigationItem[] = [
   { id: 'section-set', label: 'Set', icon: 'bento' },
+  { id: 'section-signature', label: 'Signature', icon: 'diamond' },
   { id: 'section-antipasti', label: 'Antipasti', icon: 'tapas' },
   { id: 'section-tartare', label: 'Tartare', icon: 'set_meal' },
   { id: 'section-sashimi', label: 'Sashimi', icon: 'phishing' },
   { id: 'section-nigiri', label: 'Nigiri', icon: 'radio_button_checked' },
   { id: 'section-temaki', label: 'Temaki', icon: 'icecream' },
   { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
-  { id: 'section-signature', label: 'Signature', icon: 'diamond' },
   { id: 'section-bevande', label: 'Bevande', icon: 'local_bar' },
 ];
 
@@ -85,11 +85,46 @@ export const menuData: MenuSectionData[] = [
     ]
   },
   {
+    id: 'section-signature',
+    title: 'Uramaki Signature',
+    icon: 'diamond',
+    bgClass: 'bg-cream washi-overlay',
+    items: [
+      {
+        name: 'Ichigo Okoku',
+        price: '€ 25,00',
+        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
+        isGlutenFree: true,
+        allergens: ['fish', 'crustaceans']
+      },
+      {
+        name: 'Shio Sake',
+        price: '€ 18,00',
+        description: 'Salmone marinato, avocado e ikura, sopra carpaccio di salmone marinato, mayo all\'aneto e chips di topinambur.',
+        isGlutenFree: true,
+        allergens: ['fish', 'eggs', 'mustard']
+      },
+      {
+        name: 'Maguro Tate',
+        price: '€ 30,00',
+        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
+        allergens: ['fish', 'molluscs', 'soy', 'gluten']
+      }
+    ]
+  },
+  {
     id: 'section-antipasti',
     title: 'Antipasti',
     icon: 'tapas',
     bgClass: 'bg-cream washi-overlay',
     items: [
+      {
+        name: 'Guacamole con chips di platano',
+        price: '€ 8,00',
+        description: 'Guacamole preparata al momento servita con chips di platano.',
+        isVegetarian: true,
+        isGlutenFree: true,
+      },
       {
         name: 'Edamame',
         price: '€ 4,00',
@@ -516,34 +551,7 @@ export const menuData: MenuSectionData[] = [
       }
     ]
   },
-  {
-    id: 'section-signature',
-    title: 'Uramaki Signature',
-    icon: 'diamond',
-    bgClass: 'bg-cream washi-overlay',
-    items: [
-      {
-        name: 'Ichigo Okoku',
-        price: '€ 25,00',
-        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
-        isGlutenFree: true,
-        allergens: ['fish', 'crustaceans']
-      },
-      {
-        name: 'Shio Sake',
-        price: '€ 18,00',
-        description: 'Salmone marinato, avocado, sopra carpaccio di salmone marinato, mayo all\'aneto e ikura.',
-        isGlutenFree: true,
-        allergens: ['fish', 'eggs', 'mustard']
-      },
-      {
-        name: 'Maguro Tate',
-        price: '€ 30,00',
-        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
-        allergens: ['fish', 'molluscs', 'soy', 'gluten']
-      }
-    ]
-  },
+
   {
     id: 'section-bevande',
     title: 'Bevande',
