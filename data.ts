@@ -525,7 +525,7 @@ export const menuData: MenuSectionData[] = [
       {
         name: 'Ichigo Okoku',
         price: '€ 25,00',
-        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e lime.',
+        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
         isGlutenFree: true,
         allergens: ['fish', 'crustaceans']
       },
@@ -539,7 +539,7 @@ export const menuData: MenuSectionData[] = [
       {
         name: 'Maguro Tate',
         price: '€ 30,00',
-        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo fresco di stagione.',
+        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
         allergens: ['fish', 'molluscs', 'soy', 'gluten']
       }
     ]
@@ -566,11 +566,11 @@ export const menuData: MenuSectionData[] = [
       },
       {
         name: 'Acqua Liscia 500ml',
-        price: '€ 2,00',
+        price: '€ 1,50',
       },
       {
         name: 'Acqua Frizzante 500ml',
-        price: '€ 2,00',
+        price: '€ 1,50',
       }
     ]
   }
