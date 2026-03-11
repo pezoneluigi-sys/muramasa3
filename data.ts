@@ -355,18 +355,6 @@ export const menuData: MenuSectionData[] = [
         allergens: ['fish']
       },
       {
-        name: 'Nigiri Spigola (2pz)',
-        price: '€ 6,00',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Nigiri Orata (2pz)',
-        price: '€ 5,00',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
         name: 'Nigiri Shiromi (2pz)',
         price: '€ 8,00',
         description: 'Pescato locale bianco.',
@@ -388,9 +376,23 @@ export const menuData: MenuSectionData[] = [
       },
       {
         name: 'Nigiri Gambero Rosso (2pz)',
-        price: '€ 6,00',
+        price: '€ 12,00',
         isGlutenFree: true,
         allergens: ['crustaceans']
+      },
+      {
+        name: 'Nigiri Ventresca di Salmone (2pz)',
+        price: '€ 8,00',
+        description: 'Su disponibilità.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Nigiri Ventresca di Tonno (2pz)',
+        price: '€ 8,00',
+        description: 'Su disponibilità.',
+        isGlutenFree: true,
+        allergens: ['fish']
       },
       {
         name: 'Hosomaki Salmone (6pz)',
