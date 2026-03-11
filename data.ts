@@ -55,6 +55,7 @@ export const navigationItems: NavigationItem[] = [
   { id: 'section-temaki', label: 'Temaki', icon: 'icecream' },
   { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
   { id: 'section-bevande', label: 'Bevande', icon: 'local_bar' },
+  { id: 'section-vino', label: 'Vino', icon: 'wine_bar' },
 ];
 
 export const menuData: MenuSectionData[] = [
@@ -290,7 +291,7 @@ export const menuData: MenuSectionData[] = [
       },
       {
         name: 'Gambero Rosso (1pz)',
-        price: '€ 5,00',
+        price: '€ 6,00',
         description: 'Gambero rosso di Mazara.',
         isGlutenFree: true,
         allergens: ['crustaceans']
@@ -387,7 +388,7 @@ export const menuData: MenuSectionData[] = [
       },
       {
         name: 'Nigiri Gambero Rosso (2pz)',
-        price: '€ 10,00',
+        price: '€ 6,00',
         isGlutenFree: true,
         allergens: ['crustaceans']
       },
@@ -559,18 +560,36 @@ export const menuData: MenuSectionData[] = [
     bgClass: 'bg-sage-50',
     items: [
       {
-        name: 'Asahi 33cl',
+        name: 'Sake Shika 200ml',
+        price: '€ 4,00',
+      },
+      {
+        name: 'Sake Junmai 300ml',
+        price: '€ 8,00',
+      },
+      {
+        name: 'Sake Frizzante 250ml',
+        price: '€ 8,00',
+      },
+      {
+        name: 'Birra Asahi 330ml',
         price: '€ 4,00',
         allergens: ['gluten']
       },
       {
-        name: 'Kirin 33cl',
+        name: 'Birra Kirin 330ml',
         price: '€ 4,00',
         allergens: ['gluten']
       },
       {
-        name: 'Sake 200ml',
+        name: 'Ramune Yuzu 200ml',
         price: '€ 4,00',
+        description: 'Soda giapponese gusto yuzu.'
+      },
+      {
+        name: 'Ramune Classica',
+        price: '€ 4,00',
+        description: 'Soda giapponese.'
       },
       {
         name: 'Acqua Liscia 500ml',
@@ -579,6 +598,32 @@ export const menuData: MenuSectionData[] = [
       {
         name: 'Acqua Frizzante 500ml',
         price: '€ 1,50',
+      }
+    ]
+  },
+  {
+    id: 'section-vino',
+    title: 'Vino',
+    icon: 'wine_bar',
+    bgClass: 'bg-cream washi-overlay',
+    items: [
+      {
+        name: 'Intruso Brillo con il naso all\'insù 750ml',
+        price: '€ 22,00',
+        description: 'Asprinio rifermentato.',
+        allergens: ['sulfites']
+      },
+      {
+        name: 'Giusto un litro bianco 1L',
+        price: '€ 18,00',
+        description: 'Pallagrello bianco e asprinio.',
+        allergens: ['sulfites']
+      },
+      {
+        name: 'Giusto un litro rosso 1L',
+        price: '€ 20,00',
+        description: 'Pallagrello e casavecchia.',
+        allergens: ['sulfites']
       }
     ]
   }
