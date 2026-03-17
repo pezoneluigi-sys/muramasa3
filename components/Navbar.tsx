@@ -4,9 +4,10 @@ import { assets } from '../assets';
 
 interface NavbarProps {
   viewMode: 'omakase' | 'alacarta';
+  setViewMode: (mode: 'omakase' | 'alacarta') => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ viewMode }) => {
+export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
   const [activeSection, setActiveSection] = useState<string>('');
   const desktopNavRef = useRef<HTMLDivElement>(null);
   const mobileNavRef = useRef<HTMLDivElement>(null);
@@ -135,8 +136,30 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode }) => {
           </div>
         )}
 
-        <div className="flex items-center gap-4">
-          <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-sage-100 hover:bg-white text-sage-700 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex bg-sage-600 rounded-full p-1 shadow-inner">
+            <button
+              onClick={() => setViewMode('omakase')}
+              className={`px-3 py-1 text-xs font-bold rounded-full transition-colors ${
+                viewMode === 'omakase'
+                  ? 'bg-cream text-sage-800 shadow-sm'
+                  : 'text-sage-100 hover:text-white'
+              }`}
+            >
+              Omakase
+            </button>
+            <button
+              onClick={() => setViewMode('alacarta')}
+              className={`px-3 py-1 text-xs font-bold rounded-full transition-colors whitespace-nowrap ${
+                viewMode === 'alacarta'
+                  ? 'bg-cream text-sage-800 shadow-sm'
+                  : 'text-sage-100 hover:text-white'
+              }`}
+            >
+              À la Carte
+            </button>
+          </div>
+          <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-sage-100 hover:bg-white text-sage-700 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all flex-shrink-0">
             <span className="material-symbols-outlined text-[18px]">chat</span>
           </a>
         </div>

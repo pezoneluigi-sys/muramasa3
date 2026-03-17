@@ -63,7 +63,7 @@ const App: React.FC = () => {
   return (
     <CartProvider>
       <div className="font-sans antialiased smooth-scroll bg-cream pb-20">
-        <Navbar viewMode={viewMode} />
+        <Navbar viewMode={viewMode} setViewMode={setViewMode} />
         <Hero viewMode={viewMode} setViewMode={setViewMode} />
 
         {viewMode === 'alacarta' ? (
