@@ -2,7 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { navigationItems, contactInfo } from '../data';
 import { assets } from '../assets';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  viewMode: 'omakase' | 'alacarta';
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ viewMode }) => {
   const [activeSection, setActiveSection] = useState<string>('');
   const desktopNavRef = useRef<HTMLDivElement>(null);
   const mobileNavRef = useRef<HTMLDivElement>(null);
@@ -109,64 +113,57 @@ export const Navbar: React.FC = () => {
           </span>
         </a>
 
-        <div ref={desktopNavRef} id="nav-links-container" className="hidden lg:flex gap-2 overflow-x-auto no-scrollbar items-center max-w-[60%] lg:max-w-none">
-          {navigationItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={`nav-link px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
-                  ${isActive 
-                    ? 'text-wood-900 font-extrabold border-wood-800 bg-sage-400/20' 
-                    : 'text-sage-50 font-bold border-transparent hover:text-white hover:border-cream/50'
-                  }`}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </div>
+        {viewMode === 'alacarta' && (
+          <div ref={desktopNavRef} id="nav-links-container" className="hidden lg:flex gap-2 overflow-x-auto no-scrollbar items-center max-w-[60%] lg:max-w-none">
+            {navigationItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`nav-link px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
+                    ${isActive 
+                      ? 'text-wood-900 font-extrabold border-wood-800 bg-sage-400/20' 
+                      : 'text-sage-50 font-bold border-transparent hover:text-white hover:border-cream/50'
+                    }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </div>
+        )}
 
         <div className="flex items-center gap-4">
           <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-sage-100 hover:bg-white text-sage-700 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all">
             <span className="material-symbols-outlined text-[18px]">chat</span>
           </a>
-          {/* Menu navigation shortcut for mobile */}
-          <button className="lg:hidden text-cream" onClick={() => {
-               const menuNav = document.getElementById('menu-nav');
-               if (menuNav) {
-                   const offset = 80;
-                   const pos = menuNav.getBoundingClientRect().top + window.pageYOffset - offset;
-                   window.scrollTo({top: pos, behavior: 'smooth'});
-               }
-          }}>
-            <span className="material-symbols-outlined">restaurant_menu</span>
-          </button>
         </div>
       </div>
       
       {/* Mobile Navigation Strip (visible only on mobile) */}
-      <div ref={mobileNavRef} className="lg:hidden w-full bg-sage-600 overflow-x-auto no-scrollbar py-2 px-2 flex gap-2 border-t border-sage-500 shadow-inner">
-         {navigationItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={`flex-shrink-0 px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
-                  ${isActive 
-                    ? 'text-wood-900 bg-sage-200 border-wood-800 font-bold shadow-sm' 
-                    : 'text-sage-100 border-transparent hover:bg-sage-500'
-                  }`}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-      </div>
+      {viewMode === 'alacarta' && (
+        <div ref={mobileNavRef} className="lg:hidden w-full bg-sage-600 overflow-x-auto no-scrollbar py-2 px-2 flex gap-2 border-t border-sage-500 shadow-inner">
+           {navigationItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`flex-shrink-0 px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
+                    ${isActive 
+                      ? 'text-wood-900 bg-sage-200 border-wood-800 font-bold shadow-sm' 
+                      : 'text-sage-100 border-transparent hover:bg-sage-500'
+                    }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+        </div>
+      )}
     </nav>
   );
 };

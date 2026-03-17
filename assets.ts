@@ -5,7 +5,7 @@ export const assets = {
   // 🟢 FOTO PICCOLA IN ALTO A SINISTRA (quella che sta nella barra del menu in alto)
   logoSmall: "https://lh3.googleusercontent.com/d/19a0iiQec_Cl8mSggfXsy1J2Nd62l-OET",
   
-  // 🟢 FOTO GRANDE AL CENTRO (quella tonda sopra la scritta "Muramasa Sushi Lab")
+  // 🟢 FOTO GRANDE AL CENTRO (quella tonda sopra al titolo)
   logoLarge: "https://lh3.googleusercontent.com/d/19a0iiQec_Cl8mSggfXsy1J2Nd62l-OET",
   
   // 🟢 MASCOTTE NEL MENU (l'immagine decorativa che trovi alla fine della griglia colorata del menu)

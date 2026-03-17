@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               <div className="flex flex-col gap-2 text-xs opacity-50 text-right">
                 <button onClick={onOpenLegal} className="hover:text-white underline transition-colors">Privacy Policy</button>
                 <button onClick={onOpenLegal} className="hover:text-white underline transition-colors">Cookie Policy</button>
-                <p className="mt-2">© 2026 Muramasa Sushi Lab</p>
+                <p className="mt-2">© 2026 Muramasa</p>
               </div>
             </div>
 

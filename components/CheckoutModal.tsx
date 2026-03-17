@@ -124,51 +124,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
             </div>
           )}
 
-          {/* Upselling Section */}
-          {cart.length > 0 && (
-            (() => {
-              const upsellItems = [
-                { name: 'Kizami Wasabi', price: '€ 2,00', description: 'Foglie di vero wasabi' },
-                { name: 'Sake 200ml', price: '€ 4,00', category: 'Bevande' },
-                { name: 'Asahi 33cl', price: '€ 4,00', category: 'Bevande' },
-                { name: 'Kirin 33cl', price: '€ 4,00', category: 'Bevande' }
-              ];
-              
-              const availableUpsells = upsellItems.filter(item => !cart.some(c => c.name === item.name));
-
-              if (availableUpsells.length === 0) return null;
-
-              return (
-                <div className="mt-6 border-t border-wood-100 pt-4">
-                  <h4 className="font-serif text-md text-wood-900 mb-3 flex items-center gap-2 px-1">
-                    <span className="material-symbols-outlined text-sage-600">restaurant</span>
-                    Completa il tuo ordine
-                  </h4>
-                  <div className="flex gap-3 overflow-x-auto pb-4 px-1 scrollbar-hide">
-                    {availableUpsells.map((item) => (
-                      <div key={item.name} className="min-w-[130px] bg-white border border-wood-200 rounded-xl p-3 shadow-sm flex flex-col items-center text-center justify-between">
-                        <div>
-                          <p className="font-bold text-wood-900 text-sm mb-1 leading-tight">{item.name}</p>
-                          {item.description && <p className="text-[10px] text-wood-500 mb-2 leading-tight">{item.description}</p>}
-                        </div>
-                        <div className="mt-2 w-full">
-                          <p className="text-sage-600 font-bold text-sm mb-2">{item.price}</p>
-                          <button
-                            onClick={() => addToCart(item as any)}
-                            className="w-full py-1.5 rounded-lg bg-wood-100 hover:bg-sage-500 hover:text-wood-900 text-wood-600 flex items-center justify-center transition-colors text-xs font-bold gap-1"
-                          >
-                            <span className="material-symbols-outlined text-sm">add</span>
-                            AGGIUNGI
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })()
-          )}
-
           {/* Form Inputs */}
           {cart.length > 0 && (
             <div className="mt-8 bg-white p-4 rounded-xl border border-wood-200 space-y-4 shadow-sm">
@@ -183,13 +138,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   placeholder="Il tuo nome"
                   className="w-full bg-wood-50 border-wood-200 rounded-lg focus:ring-sage-500 focus:border-sage-500 text-wood-900"
                 />
-              </div>
-
-              <div className="bg-amber-50 border border-amber-200 p-3 rounded-lg text-sm text-wood-800 flex gap-2 items-start">
-                  <span className="material-symbols-outlined text-amber-600 text-lg mt-0.5">info</span>
-                  <p>
-                      <strong>Laboratorio Artigianale:</strong> Gli slot sono limitati. L'orario richiesto verrà confermato su WhatsApp in base alla disponibilità.
-                  </p>
               </div>
 
               <div>
@@ -215,6 +163,49 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
                   className="w-full bg-wood-50 border-wood-200 rounded-lg focus:ring-sage-500 focus:border-sage-500 text-wood-900"
                 />
               </div>
+
+              {/* Upselling Section */}
+              {(() => {
+                const upsellItems = [
+                  { name: 'Kizami Wasabi', price: '€ 2,00', description: 'Foglie di vero wasabi' },
+                  { name: 'Sake 200ml', price: '€ 4,00', category: 'Bevande' },
+                  { name: 'Asahi 33cl', price: '€ 4,00', category: 'Bevande' },
+                  { name: 'Kirin 33cl', price: '€ 4,00', category: 'Bevande' }
+                ];
+                
+                const availableUpsells = upsellItems.filter(item => !cart.some(c => c.name === item.name));
+
+                if (availableUpsells.length === 0) return null;
+
+                return (
+                  <div className="mt-6 border-t border-wood-100 pt-4">
+                    <h4 className="font-serif text-md text-wood-900 mb-3 flex items-center gap-2 px-1">
+                      <span className="material-symbols-outlined text-sage-600">restaurant</span>
+                      Completa il tuo ordine
+                    </h4>
+                    <div className="flex gap-3 overflow-x-auto pb-4 px-1 scrollbar-hide">
+                      {availableUpsells.map((item) => (
+                        <div key={item.name} className="min-w-[130px] bg-white border border-wood-200 rounded-xl p-3 shadow-sm flex flex-col items-center text-center justify-between">
+                          <div>
+                            <p className="font-bold text-wood-900 text-sm mb-1 leading-tight">{item.name}</p>
+                            {item.description && <p className="text-[10px] text-wood-500 mb-2 leading-tight">{item.description}</p>}
+                          </div>
+                          <div className="mt-2 w-full">
+                            <p className="text-sage-600 font-bold text-sm mb-2">{item.price}</p>
+                            <button
+                              onClick={() => addToCart(item as any)}
+                              className="w-full py-1.5 rounded-lg bg-wood-100 hover:bg-sage-500 hover:text-wood-900 text-wood-600 flex items-center justify-center transition-colors text-xs font-bold gap-1"
+                            >
+                              <span className="material-symbols-outlined text-sm">add</span>
+                              AGGIUNGI
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
 
               {error && (
                 <p className="text-red-500 text-sm font-bold bg-red-50 p-2 rounded flex items-center gap-1">
