@@ -46,16 +46,16 @@ export const ALLERGEN_MAP: Record<string, { icon: string; label: string }> = {
 // ----------------------------------------------------------------------
 
 export const navigationItems: NavigationItem[] = [
-  { id: 'section-signature', label: 'Signature', icon: 'diamond' },
   { id: 'section-antipasti', label: 'Antipasti', icon: 'tapas' },
+  { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
+  { id: 'section-signature', label: 'Signature', icon: 'diamond' },
   { id: 'section-tartare', label: 'Tartare', icon: 'set_meal' },
   { id: 'section-sashimi', label: 'Sashimi', icon: 'phishing' },
   { id: 'section-nigiri', label: 'Nigiri', icon: 'radio_button_checked' },
   { id: 'section-temaki', label: 'Temaki', icon: 'icecream' },
-  { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
   { id: 'section-bevande', label: 'Bevande', icon: 'local_bar' },
-  { id: 'section-vino', label: 'Vino', icon: 'wine_bar' },
-];
+  { id: 'section-vino', label: 'Vino', icon: 'wine_bar' }
+    ];
 
 export const omakaseData: any[] = [
   {
@@ -127,34 +127,6 @@ export const omakaseData: any[] = [
 
 export const menuData: MenuSectionData[] = [
   {
-    id: 'section-signature',
-    title: 'Uramaki Signature',
-    icon: 'diamond',
-    bgClass: 'bg-cream washi-overlay',
-    items: [
-      {
-        name: 'Ichigo Okoku',
-        price: '€ 20,00',
-        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
-        isGlutenFree: true,
-        allergens: ['fish', 'crustaceans']
-      },
-      {
-        name: 'Shio Sake',
-        price: '€ 16,00',
-        description: 'Salmone marinato, avocado e ikura, sopra carpaccio di salmone marinato, mayo all\'aneto e chips di topinambur.',
-        isGlutenFree: true,
-        allergens: ['fish', 'eggs', 'mustard']
-      },
-      {
-        name: 'Maguro Tate',
-        price: '€ 22,00',
-        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
-        allergens: ['fish', 'molluscs', 'soy', 'gluten']
-      }
-    ]
-  },
-  {
     id: 'section-antipasti',
     title: 'Antipasti',
     icon: 'tapas',
@@ -221,6 +193,108 @@ export const menuData: MenuSectionData[] = [
         price: '€ 9,00',
         description: 'Gamberi fritti in pastella con salsa tentsuyu.',
         allergens: ['crustaceans', 'gluten', 'soy', 'fish']
+      }
+    ]
+  },
+  {
+    id: 'section-uramaki',
+    title: 'Uramaki',
+    icon: 'donut_large',
+    bgClass: 'bg-sage-50',
+    items: [
+      {
+        name: 'Philadelphia (8pz)',
+        price: '€ 9,00',
+        description: 'Salmone, philadelphia, esterno sesamo.',
+        isGlutenFree: true,
+        allergens: ['fish', 'milk', 'sesame']
+      },
+      {
+        name: 'California Ebi (8pz)',
+        price: '€ 12,00',
+        description: 'Mazzancolla bollita, avocado, cetriolo, maionese giapponese, esterno sesamo.',
+        isGlutenFree: true,
+        allergens: ['crustaceans', 'eggs', 'sesame', 'mustard']
+      },
+      {
+        name: 'California (8pz)',
+        price: '€ 8,00',
+        description: 'Surimi, avocado, maionese giapponese, esterno sesamo.',
+        allergens: ['crustaceans', 'fish', 'eggs', 'sesame', 'mustard', 'gluten']
+      },
+      {
+        name: 'Sake Avocado (8pz)',
+        price: '€ 10,00',
+        description: 'Salmone, avocado, esterno carpaccio di salmone.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Tonno e Avocado (8pz)',
+        price: '€ 12,00',
+        description: 'Tonno, avocado, esterno carpaccio di tonno.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Ricciola, Kappa e Shiso (8pz)',
+        price: '€ 12,00',
+        description: 'Ricciola, cetriolo e shiso, esterno furikake vegetale.',
+        allergens: ['fish', 'sesame', 'gluten']
+      },
+      {
+        name: 'Sake Spicy (8pz)',
+        price: '€ 9,00',
+        description: 'Interno avocado, sopra tartare di salmone piccante e jalapeño, sesamo bianco.',
+        isSpicy: true,
+        allergens: ['fish', 'eggs', 'sesame', 'gluten']
+      },
+      {
+        name: 'Tonno Spicy (8pz)',
+        price: '€ 10,00',
+        description: 'Interno avocado, sopra tartare di tonno piccante e jalapeño.',
+        isSpicy: true,
+        allergens: ['fish', 'eggs', 'sesame', 'gluten']
+      },
+      {
+        name: 'Sake Nikkei (8pz)',
+        price: '€ 12,00',
+        description: 'Salmone cotto e philadelphia, coperto di salmone scottato, salsa agrodolce e teriyaki.',
+        allergens: ['fish', 'milk', 'soy', 'gluten']
+      },
+      {
+        name: 'King Roll (8pz)',
+        price: '€ 10,00',
+        description: 'Gambero in tempura, avocado, iceberg, esterno sesamo e tobiko.',
+        allergens: ['crustaceans', 'gluten', 'sesame', 'fish']
+      }
+    ]
+  },
+  {
+    id: 'section-signature',
+    title: 'Uramaki Signature',
+    icon: 'diamond',
+    bgClass: 'bg-cream washi-overlay',
+    items: [
+      {
+        name: 'Ichigo Okoku (8pz)',
+        price: '€ 20,00',
+        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
+        isGlutenFree: true,
+        allergens: ['fish', 'crustaceans']
+      },
+      {
+        name: 'Shio Sake (8pz)',
+        price: '€ 16,00',
+        description: 'Salmone marinato, avocado e ikura, sopra carpaccio di salmone marinato, mayo all\'aneto e chips di topinambur.',
+        isGlutenFree: true,
+        allergens: ['fish', 'eggs', 'mustard']
+      },
+      {
+        name: 'Maguro Tate (8pz)',
+        price: '€ 22,00',
+        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
+        allergens: ['fish', 'molluscs', 'soy', 'gluten']
       }
     ]
   },
@@ -336,24 +410,6 @@ export const menuData: MenuSectionData[] = [
         description: 'Gambero rosso di Mazara.',
         isGlutenFree: true,
         allergens: ['crustaceans']
-      },
-      {
-        name: 'Tataki Salmone (4pz)',
-        price: '€ 7,00',
-        description: 'Salmone scottato.',
-        allergens: ['fish', 'soy', 'sesame']
-      },
-      {
-        name: 'Tataki Tonno (4pz)',
-        price: '€ 7,00',
-        description: 'Tonno scottato.',
-        allergens: ['fish', 'soy', 'sesame']
-      },
-      {
-        name: 'Tataki Ricciola (4pz)',
-        price: '€ 9,00',
-        description: 'Ricciola scottata.',
-        allergens: ['fish', 'soy', 'sesame']
       }
     ]
   },
@@ -521,81 +577,6 @@ export const menuData: MenuSectionData[] = [
       }
     ]
   },
-  {
-    id: 'section-uramaki',
-    title: 'Uramaki',
-    icon: 'donut_large',
-    bgClass: 'bg-sage-50',
-    items: [
-      {
-        name: 'Philadelphia',
-        price: '€ 9,00',
-        description: 'Salmone, philadelphia, esterno sesamo.',
-        isGlutenFree: true,
-        allergens: ['fish', 'milk', 'sesame']
-      },
-      {
-        name: 'California Ebi',
-        price: '€ 12,00',
-        description: 'Mazzancolla bollita, avocado, cetriolo, maionese giapponese, esterno sesamo.',
-        isGlutenFree: true,
-        allergens: ['crustaceans', 'eggs', 'sesame', 'mustard']
-      },
-      {
-        name: 'California',
-        price: '€ 8,00',
-        description: 'Surimi, avocado, maionese giapponese, esterno sesamo.',
-        allergens: ['crustaceans', 'fish', 'eggs', 'sesame', 'mustard', 'gluten']
-      },
-      {
-        name: 'Sake Avocado',
-        price: '€ 10,00',
-        description: 'Salmone, avocado, esterno carpaccio di salmone.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Tonno e Avocado',
-        price: '€ 12,00',
-        description: 'Tonno, avocado, esterno carpaccio di tonno.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Ricciola, Kappa e Shiso',
-        price: '€ 12,00',
-        description: 'Ricciola, cetriolo e shiso, esterno furikake vegetale.',
-        allergens: ['fish', 'sesame', 'gluten']
-      },
-      {
-        name: 'Sake Spicy',
-        price: '€ 9,00',
-        description: 'Interno avocado, sopra tartare di salmone piccante e jalapeño, sesamo bianco.',
-        isSpicy: true,
-        allergens: ['fish', 'eggs', 'sesame', 'gluten']
-      },
-      {
-        name: 'Tonno Spicy',
-        price: '€ 10,00',
-        description: 'Interno avocado, sopra tartare di tonno piccante e jalapeño.',
-        isSpicy: true,
-        allergens: ['fish', 'eggs', 'sesame', 'gluten']
-      },
-      {
-        name: 'Sake Nikkei',
-        price: '€ 12,00',
-        description: 'Salmone cotto e philadelphia, coperto di salmone scottato, salsa agrodolce e teriyaki.',
-        allergens: ['fish', 'milk', 'soy', 'gluten']
-      },
-      {
-        name: 'King Roll',
-        price: '€ 10,00',
-        description: 'Gambero in tempura, avocado, iceberg, esterno sesamo e tobiko.',
-        allergens: ['crustaceans', 'gluten', 'sesame', 'fish']
-      }
-    ]
-  },
-
   {
     id: 'section-bevande',
     title: 'Bevande',

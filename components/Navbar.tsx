@@ -14,6 +14,11 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (viewMode !== 'alacarta') {
+        setActiveSection('');
+        return;
+      }
+
       // Determine the "scan line" where we check for active content.
       // We want to highlight the section that is currently visible just under the header.
       const isMobile = window.innerWidth < 1024;
@@ -47,6 +52,8 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
 
       if (current) {
           setActiveSection(current);
+      } else {
+          setActiveSection('');
       }
     };
 
@@ -55,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [viewMode]);
 
   const scrollToActiveLink = (container: HTMLElement | null, sectionId: string) => {
     if (container && sectionId) {
@@ -80,6 +87,23 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    
+    if (viewMode !== 'alacarta') {
+      setViewMode('alacarta');
+      // Wait for DOM to render the sections before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+            const isMobile = window.innerWidth < 1024;
+            const headerOffset = isMobile ? 120 : 80; 
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
+      }, 100);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
         const isMobile = window.innerWidth < 1024;
@@ -114,27 +138,25 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
           </span>
         </a>
 
-        {viewMode === 'alacarta' && (
-          <div ref={desktopNavRef} id="nav-links-container" className="hidden lg:flex gap-2 overflow-x-auto no-scrollbar items-center max-w-[60%] lg:max-w-none">
-            {navigationItems.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => handleNavClick(e, item.id)}
-                  className={`nav-link px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
-                    ${isActive 
-                      ? 'text-wood-900 font-extrabold border-wood-800 bg-sage-400/20' 
-                      : 'text-sage-50 font-bold border-transparent hover:text-white hover:border-cream/50'
-                    }`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-          </div>
-        )}
+        <div ref={desktopNavRef} id="nav-links-container" className="hidden lg:flex gap-2 overflow-x-auto no-scrollbar items-center max-w-[60%] lg:max-w-none">
+          {navigationItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={`nav-link px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
+                  ${isActive 
+                    ? 'text-wood-900 font-extrabold border-wood-800 bg-sage-400/20' 
+                    : 'text-sage-50 font-bold border-transparent hover:text-white hover:border-cream/50'
+                  }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="flex bg-sage-600 rounded-full p-1 shadow-inner">
@@ -166,27 +188,25 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
       </div>
       
       {/* Mobile Navigation Strip (visible only on mobile) */}
-      {viewMode === 'alacarta' && (
-        <div ref={mobileNavRef} className="lg:hidden w-full bg-sage-600 overflow-x-auto no-scrollbar py-2 px-2 flex gap-2 border-t border-sage-500 shadow-inner">
-           {navigationItems.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => handleNavClick(e, item.id)}
-                  className={`flex-shrink-0 px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
-                    ${isActive 
-                      ? 'text-wood-900 bg-sage-200 border-wood-800 font-bold shadow-sm' 
-                      : 'text-sage-100 border-transparent hover:bg-sage-500'
-                    }`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-        </div>
-      )}
+      <div ref={mobileNavRef} className="lg:hidden w-full bg-sage-600 overflow-x-auto no-scrollbar py-2 px-2 flex gap-2 border-t border-sage-500 shadow-inner">
+         {navigationItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={`flex-shrink-0 px-3 py-1 text-xs tracking-wide rounded-md transition-all uppercase border-b-2 whitespace-nowrap cursor-pointer select-none
+                  ${isActive 
+                    ? 'text-wood-900 bg-sage-200 border-wood-800 font-bold shadow-sm' 
+                    : 'text-sage-100 border-transparent hover:bg-sage-500'
+                  }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+      </div>
     </nav>
   );
 };
