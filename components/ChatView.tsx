@@ -146,7 +146,9 @@ export const ChatView: React.FC<ChatViewProps> = ({ onBackToMenu }) => {
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      // Fallback to window.process.env if Vite replaces process.env with {}
+      const apiKey = (typeof window !== 'undefined' && (window as any).process?.env?.GEMINI_API_KEY) || process.env.GEMINI_API_KEY;
+      const ai = new GoogleGenAI({ apiKey });
       
       const currentContents = [...historyRef.current, { role: 'user', parts: [{ text }] }];
 
