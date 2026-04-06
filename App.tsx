@@ -13,13 +13,11 @@ import { AllergenLegend } from './components/AllergenLegend';
 import { PrivacyModal } from './components/PrivacyModal';
 import { CookieBanner } from './components/CookieBanner';
 import { OmakaseView } from './components/OmakaseView';
-import { LandingView } from './components/LandingView';
-import { ChatView } from './components/ChatView';
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
-  const [viewMode, setViewMode] = useState<'landing' | 'chat' | 'omakase' | 'alacarta'>('landing');
+  const [viewMode, setViewMode] = useState<'omakase' | 'alacarta'>('omakase');
   
   // State for Privacy Modal
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -64,65 +62,51 @@ const App: React.FC = () => {
 
   return (
     <CartProvider>
-      {viewMode === 'landing' && (
-        <LandingView 
-          onStartChat={() => setViewMode('chat')} 
-          onShowMenu={() => setViewMode('omakase')} 
-        />
-      )}
+      <div className="font-sans antialiased smooth-scroll bg-cream pb-20">
+        <Navbar viewMode={viewMode} setViewMode={setViewMode} />
+        <Hero viewMode={viewMode} setViewMode={setViewMode} />
 
-      {viewMode === 'chat' && (
-        <ChatView onBackToMenu={() => setViewMode('omakase')} />
-      )}
+        {viewMode === 'alacarta' ? (
+          <>
+            <SearchBar 
+              searchTerm={searchTerm} 
+              setSearchTerm={setSearchTerm}
+              activeFilter={activeFilter}
+              setActiveFilter={setActiveFilter}
+            />
+            <main className="w-full relative z-10 min-h-[400px]">
+              {filteredMenu.length > 0 ? (
+                filteredMenu.map((section, index) => (
+                  <MenuSection 
+                    key={section.id} 
+                    data={section} 
+                    isLast={index === filteredMenu.length - 1} 
+                  />
+                ))
+              ) : (
+                <div className="text-center py-20 opacity-60">
+                  <span className="material-symbols-outlined text-6xl text-wood-300 mb-4">search_off</span>
+                  <p className="text-xl font-serif text-wood-600">Nessun piatto trovato</p>
+                  <button 
+                    onClick={() => { setSearchTerm(''); setActiveFilter('all'); }}
+                    className="mt-4 text-sage-600 underline hover:text-sage-800"
+                  >
+                    Resetta filtri
+                  </button>
+                </div>
+              )}
+            </main>
+          </>
+        ) : (
+          <OmakaseView />
+        )}
 
-      {(viewMode === 'omakase' || viewMode === 'alacarta') && (
-        <div className="font-sans antialiased smooth-scroll bg-cream pb-20">
-          <Navbar viewMode={viewMode} setViewMode={setViewMode} />
-          <Hero viewMode={viewMode} setViewMode={setViewMode} />
-
-          {viewMode === 'alacarta' ? (
-            <>
-              <SearchBar 
-                searchTerm={searchTerm} 
-                setSearchTerm={setSearchTerm}
-                activeFilter={activeFilter}
-                setActiveFilter={setActiveFilter}
-              />
-              <main className="w-full relative z-10 min-h-[400px]">
-                {filteredMenu.length > 0 ? (
-                  filteredMenu.map((section, index) => (
-                    <MenuSection 
-                      key={section.id} 
-                      data={section} 
-                      isLast={index === filteredMenu.length - 1} 
-                    />
-                  ))
-                ) : (
-                  <div className="text-center py-20 opacity-60">
-                    <span className="material-symbols-outlined text-6xl text-wood-300 mb-4">search_off</span>
-                    <p className="text-xl font-serif text-wood-600">Nessun piatto trovato</p>
-                    <button 
-                      onClick={() => { setSearchTerm(''); setActiveFilter('all'); }}
-                      className="mt-4 text-sage-600 underline hover:text-sage-800"
-                    >
-                      Resetta filtri
-                    </button>
-                  </div>
-                )}
-              </main>
-            </>
-          ) : (
-            <OmakaseView />
-          )}
-
-          <AllergenLegend />
-          
-          <Footer onOpenLegal={() => setIsPrivacyOpen(true)} />
-        </div>
-      )}
+        <AllergenLegend />
+        
+        <Footer onOpenLegal={() => setIsPrivacyOpen(true)} />
+      </div>
       
-      {/* Elementi globali che devono essere sempre disponibili se non siamo nella landing */}
-      {viewMode !== 'landing' && viewMode !== 'chat' && <CartFloatingBar />}
+      <CartFloatingBar />
       
       {/* Modale e Banner Privacy */}
       <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
