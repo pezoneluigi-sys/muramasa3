@@ -340,12 +340,12 @@ export const ChatView: React.FC<ChatViewProps> = ({ onBackToMenu }) => {
         historyRef.current.push({ role: 'model', parts: [{ text: botText }] });
       }
 
-    } catch (error) {
+    } catch (error: any) {
       console.error("Errore chat:", error);
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         sender: 'bot',
-        text: 'Scusa, i miei aculei si sono incrociati. Puoi ripetere?'
+        text: `Scusa, i miei aculei si sono incrociati. Errore: ${error?.message || String(error)}`
       }]);
     } finally {
       setIsLoading(false);
