@@ -118,7 +118,7 @@ export const ChatView: React.FC<ChatViewProps> = ({ onBackToMenu }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const chatRef = useRef<any>(null);
+  const historyRef = useRef<any[]>([]);
   const { cart, addToCart, removeFromCart, totalItems, totalPrice } = useCart();
 
   const quickReplies = [
@@ -146,19 +146,19 @@ export const ChatView: React.FC<ChatViewProps> = ({ onBackToMenu }) => {
     setIsLoading(true);
 
     try {
-      if (!chatRef.current) {
-        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-        chatRef.current = ai.chats.create({
-          model: "gemini-3-flash-preview",
-          config: {
-            systemInstruction,
-            tools: [{ functionDeclarations: [addToCartFunctionDeclaration, removeFromCartFunctionDeclaration, sendOrderFunctionDeclaration] }],
-            temperature: 0.7,
-          }
-        });
-      }
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      
+      const currentContents = [...historyRef.current, { role: 'user', parts: [{ text }] }];
 
-      const response = await chatRef.current.sendMessage({ message: text });
+      const response = await ai.models.generateContent({
+        model: "gemini-3-flash-preview",
+        contents: currentContents,
+        config: {
+          systemInstruction,
+          tools: [{ functionDeclarations: [addToCartFunctionDeclaration, removeFromCartFunctionDeclaration, sendOrderFunctionDeclaration] }],
+          temperature: 0.7,
+        }
+      });
       
       let botText = response.text || '';
       
@@ -334,6 +334,10 @@ export const ChatView: React.FC<ChatViewProps> = ({ onBackToMenu }) => {
           sender: 'bot',
           text: botText
         }]);
+        
+        // Update history manually
+        historyRef.current.push({ role: 'user', parts: [{ text }] });
+        historyRef.current.push({ role: 'model', parts: [{ text: botText }] });
       }
 
     } catch (error) {
