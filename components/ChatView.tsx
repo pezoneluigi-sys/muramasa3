@@ -146,7 +146,6 @@ export const ChatView: React.FC<ChatViewProps> = ({ onBackToMenu }) => {
     setIsLoading(true);
 
     try {
-      console.log("API KEY IS:", process.env.GEMINI_API_KEY ? "DEFINED" : "UNDEFINED");
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       
       const currentContents = [...historyRef.current, { role: 'user', parts: [{ text }] }];
