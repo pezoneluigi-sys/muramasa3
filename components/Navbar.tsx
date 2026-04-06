@@ -3,8 +3,8 @@ import { navigationItems, contactInfo } from '../data';
 import { assets } from '../assets';
 
 interface NavbarProps {
-  viewMode: 'omakase' | 'alacarta';
-  setViewMode: (mode: 'omakase' | 'alacarta') => void;
+  viewMode: 'omakase' | 'alacarta' | 'chat' | 'landing';
+  setViewMode: (mode: 'omakase' | 'alacarta' | 'chat' | 'landing') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
@@ -179,6 +179,17 @@ export const Navbar: React.FC<NavbarProps> = ({ viewMode, setViewMode }) => {
               }`}
             >
               À la Carte
+            </button>
+            <button
+              onClick={() => setViewMode('chat')}
+              className={`px-3 py-1 text-xs font-bold rounded-full transition-colors whitespace-nowrap flex items-center gap-1 ${
+                viewMode === 'chat'
+                  ? 'bg-cream text-sage-800 shadow-sm'
+                  : 'text-sage-100 hover:text-white'
+              }`}
+            >
+              <span className="material-symbols-outlined text-[14px]">forum</span>
+              Muramasa
             </button>
           </div>
           <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-sage-100 hover:bg-white text-sage-700 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all flex-shrink-0">

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { contactInfo } from '../data';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -15,8 +16,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
   const [notes, setNotes] = useState('');
   
   const [error, setError] = useState('');
-
-  if (!isOpen) return null;
 
   // Validazione comune
   const validateOrder = (): boolean => {
@@ -72,26 +71,41 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-end md:items-center justify-center">
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-wood-900/80 backdrop-blur-sm transition-opacity"
-        onClick={onClose}
-      ></div>
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[60] flex items-end md:items-center justify-center">
+          {/* Backdrop */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-wood-900/80 backdrop-blur-sm"
+            onClick={onClose}
+          />
 
-      {/* Modal Content */}
-      <div className="bg-cream w-full md:max-w-lg md:rounded-2xl rounded-t-2xl shadow-2xl overflow-hidden relative z-10 flex flex-col max-h-[90vh] animate-slide-up">
-        
-        {/* Header */}
-        <div className="bg-sage-500 p-4 flex items-center justify-between text-wood-900 shadow-md flex-shrink-0">
-          <h3 className="font-serif text-xl font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined">receipt_long</span>
-            Il tuo Ordine
-          </h3>
-          <button onClick={onClose} className="p-1 hover:bg-sage-600 rounded-full transition-colors">
-            <span className="material-symbols-outlined">close</span>
-          </button>
-        </div>
+          {/* Bottom Sheet / Modal Content */}
+          <motion.div 
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="bg-cream w-full md:max-w-lg md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden relative z-10 flex flex-col max-h-[90dvh] md:max-h-[85vh] h-full md:h-auto"
+          >
+            {/* Drag Handle (Mobile Only) */}
+            <div className="md:hidden w-full flex justify-center pt-3 pb-2 bg-sage-500 cursor-grab active:cursor-grabbing" onClick={onClose}>
+              <div className="w-12 h-1.5 bg-wood-900/20 rounded-full"></div>
+            </div>
+
+            {/* Header */}
+            <div className="bg-sage-500 p-4 pt-2 md:pt-4 flex items-center justify-between text-wood-900 shadow-md flex-shrink-0">
+              <h3 className="font-serif text-xl font-bold flex items-center gap-2">
+                <span className="material-symbols-outlined">receipt_long</span>
+                Il tuo Ordine
+              </h3>
+              <button onClick={onClose} className="p-1 hover:bg-sage-600 rounded-full transition-colors">
+                <span className="material-symbols-outlined">close</span>
+              </button>
+            </div>
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -241,7 +255,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose })
             </div>
           </div>
         )}
-      </div>
-    </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 };

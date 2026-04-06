@@ -18,5 +18,9 @@ export const assets = {
   storyImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBPxTU7PVD0S6aBcx9EIfqCZuvUFXUjEL36Bfg2ASoVOx6Fk-o868FQMGMKcrDxvLJunvJDTtOgHmPfMlF0TzgkKSP825RDep1utAp3X4TytXUzrlNwrnb2Ra_j891xyT_vlTwgWkKZpqHlfvRUDWTkMQkOhnbLuAZiGygPfs4L6glVR554_SV8Ivd6lCMg9QWfCtQJE3Bb5-G_MIGxWzbBR8kK9hdNRpNE3Vgh44ADs8oXIOpxKDRr9ifeocGhXL2a6p4ViAJXn1g",
   
   // Sfondo decorativo per la sezione storia (pattern o texture)
-  storyBackground: "https://lh3.googleusercontent.com/aida-public/AB6AXuD4FTWSnytEQw_i2MrN98lixoEZvVf5kMDXdpT1htAibcZNhz_McpWcpUL6TM2r_c_vkGXwgMrGKAw_WF92cjxmVeGjnG4eS9rNKbw6-nwckTJNeLui54GZGSQHu4-xccRnSkmD6XPHU0HgQbtbwU52h_a-8nu8gVeRU_hHFSHcBblyzzlU_R70ggbzetTw8Ia-t_Ph9GyJ8D_9d0_mEJVy6vKdDUaJHbFqBQy6Ssr4E_pMcD2rsQcOub4VFbtKCjsNnFOlMJql1jc"
+  storyBackground: "https://lh3.googleusercontent.com/aida-public/AB6AXuD4FTWSnytEQw_i2MrN98lixoEZvVf5kMDXdpT1htAibcZNhz_McpWcpUL6TM2r_c_vkGXwgMrGKAw_WF92cjxmVeGjnG4eS9rNKbw6-nwckTJNeLui54GZGSQHu4-xccRnSkmD6XPHU0HgQbtbwU52h_a-8nu8gVeRU_hHFSHcBblyzzlU_R70ggbzetTw8Ia-t_Ph9GyJ8D_9d0_mEJVy6vKdDUaJHbFqBQy6Ssr4E_pMcD2rsQcOub4VFbtKCjsNnFOlMJql1jc",
+
+  // 🟢 SFONDO DELLA CHAT (L'immagine con Muramasa al bancone che hai caricato)
+  // Sostituisci questo link con l'URL della tua immagine
+  chatBackground: "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?q=80&w=2075&auto=format&fit=crop"
 };
