@@ -58,6 +58,14 @@ export const navigationItems: NavigationItem[] = [
 
 export const omakaseData: any[] = [
   {
+    id: 'l-intreccio',
+    name: 'L\'Intreccio',
+    price: '€ 25,00',
+    description: 'Un percorso studiato per gli amanti degli uramaki. Include: 1 porzione di takoyaki o yakitori, 4pz uramaki salmone crudo, 4pz uramaki salmone cotto, 4pz uramaki gambero in tempura, 4pz uramaki tonno, 4pz uramaki pesce bianco.',
+    tags: ['Uramaki', 'Selezione'],
+    allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
+  },
+  {
     id: 'elogio-del-salmone',
     name: 'L\'Elogio del Salmone',
     price: '€ 25,00',
@@ -71,14 +79,6 @@ export const omakaseData: any[] = [
     price: '€ 28,00',
     description: 'Un percorso studiato per chi apprezza la complessità del tonno. Include: Carpaccio di tonno 6pz, 4pz nigiri tonno, 2pz sashimi tonno, 4pz uramaki tonno e avocado, 6pz hosomaki tonno.',
     tags: ['Tonno', 'Selezione'],
-    allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
-  },
-  {
-    id: 'l-intreccio',
-    name: 'L\'Intreccio',
-    price: '€ 25,00',
-    description: 'Un percorso studiato per gli amanti degli uramaki. Include: 1 porzione di takoyaki o yakitori, 4pz uramaki salmone crudo, 4pz uramaki salmone cotto, 4pz uramaki gambero in tempura, 4pz uramaki tonno, 4pz uramaki pesce bianco.',
-    tags: ['Uramaki', 'Selezione'],
     allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
   },
   {
