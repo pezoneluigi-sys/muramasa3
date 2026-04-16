@@ -131,14 +131,7 @@ export const menuData: MenuSectionData[] = [
     icon: 'tapas',
     bgClass: 'bg-cream washi-overlay',
     items: [
-      {
-        name: 'Guacamole con chips di platano',
-        price: '€ 8,00',
-        description: 'Guacamole preparata al momento servita con chips di platano.',
-        isVegetarian: true,
-        isGlutenFree: true,
-      },
-      {
+{
         name: 'Edamame',
         price: '€ 4,00',
         description: 'Fagioli di soia al vapore con sale Maldon.',
