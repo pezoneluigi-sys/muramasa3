@@ -48,7 +48,6 @@ export const ALLERGEN_MAP: Record<string, { icon: string; label: string }> = {
 export const navigationItems: NavigationItem[] = [
   { id: 'section-antipasti', label: 'Antipasti', icon: 'tapas' },
   { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
-  { id: 'section-signature', label: 'Signature', icon: 'diamond' },
   { id: 'section-tartare', label: 'Tartare', icon: 'set_meal' },
   { id: 'section-sashimi', label: 'Sashimi', icon: 'phishing' },
   { id: 'section-nigiri', label: 'Nigiri', icon: 'radio_button_checked' },
@@ -267,34 +266,6 @@ export const menuData: MenuSectionData[] = [
         price: '€ 10,00',
         description: 'Gambero in tempura, avocado, iceberg, esterno sesamo e tobiko.',
         allergens: ['crustaceans', 'gluten', 'sesame', 'fish']
-      }
-    ]
-  },
-  {
-    id: 'section-signature',
-    title: 'Uramaki Signature',
-    icon: 'diamond',
-    bgClass: 'bg-cream washi-overlay',
-    items: [
-      {
-        name: 'Ichigo Okoku (8pz)',
-        price: '€ 20,00',
-        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
-        isGlutenFree: true,
-        allergens: ['fish', 'crustaceans']
-      },
-      {
-        name: 'Shio Sake (8pz)',
-        price: '€ 16,00',
-        description: 'Salmone marinato, avocado e ikura, sopra carpaccio di salmone marinato, mayo all\'aneto e chips di topinambur.',
-        isGlutenFree: true,
-        allergens: ['fish', 'eggs', 'mustard']
-      },
-      {
-        name: 'Maguro Tate (8pz)',
-        price: '€ 22,00',
-        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
-        allergens: ['fish', 'molluscs', 'soy', 'gluten']
       }
     ]
   },
