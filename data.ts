@@ -48,7 +48,6 @@ export const ALLERGEN_MAP: Record<string, { icon: string; label: string }> = {
 export const navigationItems: NavigationItem[] = [
   { id: 'section-antipasti', label: 'Antipasti', icon: 'tapas' },
   { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
-  { id: 'section-signature', label: 'Signature', icon: 'diamond' },
   { id: 'section-tartare', label: 'Tartare', icon: 'set_meal' },
   { id: 'section-sashimi', label: 'Sashimi', icon: 'phishing' },
   { id: 'section-nigiri', label: 'Nigiri', icon: 'radio_button_checked' },
@@ -58,6 +57,14 @@ export const navigationItems: NavigationItem[] = [
     ];
 
 export const omakaseData: any[] = [
+  {
+    id: 'l-intreccio',
+    name: 'L\'Intreccio',
+    price: '€ 25,00',
+    description: 'Un percorso studiato per gli amanti degli uramaki. Include: 1 porzione di takoyaki o yakitori, 4pz uramaki salmone crudo, 4pz uramaki salmone cotto, 4pz uramaki gambero in tempura, 4pz uramaki tonno, 4pz uramaki pesce bianco.',
+    tags: ['Uramaki', 'Selezione'],
+    allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
+  },
   {
     id: 'elogio-del-salmone',
     name: 'L\'Elogio del Salmone',
@@ -72,14 +79,6 @@ export const omakaseData: any[] = [
     price: '€ 28,00',
     description: 'Un percorso studiato per chi apprezza la complessità del tonno. Include: Carpaccio di tonno 6pz, 4pz nigiri tonno, 2pz sashimi tonno, 4pz uramaki tonno e avocado, 6pz hosomaki tonno.',
     tags: ['Tonno', 'Selezione'],
-    allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
-  },
-  {
-    id: 'l-intreccio',
-    name: 'L\'Intreccio',
-    price: '€ 25,00',
-    description: 'Un percorso studiato per gli amanti degli uramaki. Include: 1 porzione di takoyaki o yakitori, 4pz uramaki salmone crudo, 4pz uramaki salmone cotto, 4pz uramaki gambero in tempura, 4pz uramaki tonno, 4pz uramaki pesce bianco.',
-    tags: ['Uramaki', 'Selezione'],
     allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
   },
   {
@@ -132,14 +131,7 @@ export const menuData: MenuSectionData[] = [
     icon: 'tapas',
     bgClass: 'bg-cream washi-overlay',
     items: [
-      {
-        name: 'Guacamole con chips di platano',
-        price: '€ 8,00',
-        description: 'Guacamole preparata al momento servita con chips di platano.',
-        isVegetarian: true,
-        isGlutenFree: true,
-      },
-      {
+{
         name: 'Edamame',
         price: '€ 4,00',
         description: 'Fagioli di soia al vapore con sale Maldon.',
@@ -267,34 +259,6 @@ export const menuData: MenuSectionData[] = [
         price: '€ 10,00',
         description: 'Gambero in tempura, avocado, iceberg, esterno sesamo e tobiko.',
         allergens: ['crustaceans', 'gluten', 'sesame', 'fish']
-      }
-    ]
-  },
-  {
-    id: 'section-signature',
-    title: 'Uramaki Signature',
-    icon: 'diamond',
-    bgClass: 'bg-cream washi-overlay',
-    items: [
-      {
-        name: 'Ichigo Okoku (8pz)',
-        price: '€ 20,00',
-        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
-        isGlutenFree: true,
-        allergens: ['fish', 'crustaceans']
-      },
-      {
-        name: 'Shio Sake (8pz)',
-        price: '€ 16,00',
-        description: 'Salmone marinato, avocado e ikura, sopra carpaccio di salmone marinato, mayo all\'aneto e chips di topinambur.',
-        isGlutenFree: true,
-        allergens: ['fish', 'eggs', 'mustard']
-      },
-      {
-        name: 'Maguro Tate (8pz)',
-        price: '€ 22,00',
-        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
-        allergens: ['fish', 'molluscs', 'soy', 'gluten']
       }
     ]
   },
