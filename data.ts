@@ -48,14 +48,14 @@ export const ALLERGEN_MAP: Record<string, { icon: string; label: string }> = {
 export const navigationItems: NavigationItem[] = [
   { id: 'section-antipasti', label: 'Antipasti', icon: 'tapas' },
   { id: 'section-uramaki', label: 'Uramaki', icon: 'donut_large' },
-  { id: 'section-signature', label: 'Signature', icon: 'diamond' },
-  { id: 'section-tartare', label: 'Tartare', icon: 'set_meal' },
-  { id: 'section-sashimi', label: 'Sashimi', icon: 'phishing' },
   { id: 'section-nigiri', label: 'Nigiri', icon: 'radio_button_checked' },
+  { id: 'section-hosomaki', label: 'Hosomaki', icon: 'view_week' },
+  { id: 'section-sashimi', label: 'Sashimi', icon: 'phishing' },
   { id: 'section-temaki', label: 'Temaki', icon: 'icecream' },
+  { id: 'section-tartare', label: 'Tartare', icon: 'set_meal' },
   { id: 'section-bevande', label: 'Bevande', icon: 'local_bar' },
   { id: 'section-vino', label: 'Vino', icon: 'wine_bar' }
-    ];
+];
 
 export const omakaseData: any[] = [
   {
@@ -66,6 +66,7 @@ export const omakaseData: any[] = [
     tags: ['Salmone', 'Selezione'],
     allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
   },
+
   {
     id: 'rispetto-per-il-tonno',
     name: 'Il Rispetto per il Tonno',
@@ -94,7 +95,7 @@ export const omakaseData: any[] = [
     id: 'la-radice',
     name: 'La Radice',
     price: '€ 16,00',
-    description: 'Un percorso per i nostri amici vegetariani. Include: Una porzione goma wakame, 8pz uramaki vegetariano, 6pz hosomaki cetriolo e shiso, 6pz hosomaki avocado e sesamo.',
+    description: 'Un percorso per i nostri amici vegetariani. Include: Una porzione goma wakame, 8pz uramaki vegetariano, 6pz hosomaki cetriolo, 6pz hosomaki avocado e sesamo.',
     tags: ['Vegetariano', 'Selezione'],
     allergens: ['gluten', 'crustaceans', 'eggs', 'fish', 'peanuts', 'soy', 'milk', 'nuts', 'celery', 'mustard', 'sesame', 'sulfites', 'lupins', 'molluscs']
   },
@@ -164,25 +165,6 @@ export const menuData: MenuSectionData[] = [
         allergens: ['sesame', 'soy', 'gluten']
       },
       {
-        name: 'Gyoza Pollo',
-        price: '€ 4,00',
-        description: 'Ravioli ripieni di pollo.',
-        allergens: ['gluten', 'soy', 'sesame']
-      },
-      {
-        name: 'Gyoza Veg',
-        price: '€ 4,00',
-        description: 'Ravioli ripieni di verdure.',
-        isVegetarian: true,
-        allergens: ['gluten', 'soy', 'sesame']
-      },
-      {
-        name: 'Yakitori Pollo',
-        price: '€ 5,00',
-        description: 'Spiedini di pollo glassati in teriyaki con erba cipollina.',
-        allergens: ['soy', 'gluten']
-      },
-      {
         name: 'Takoyaki',
         price: '€ 5,00',
         description: 'Polpettine di polpo fritte con salsa BBQ e katsuobushi.',
@@ -202,6 +184,24 @@ export const menuData: MenuSectionData[] = [
     icon: 'donut_large',
     bgClass: 'bg-sage-50',
     items: [
+      {
+        name: 'Uramaki Set 16pz',
+        price: '€ 20,00',
+        description: 'Selezione di 16 pezzi con 4 gusti diversi scelti dallo chef.',
+        allergens: ['fish', 'crustaceans', 'soy', 'gluten', 'eggs', 'milk', 'mustard', 'sesame'] // General allergens for mixed sets
+      },
+      {
+        name: 'Uramaki Set 24pz',
+        price: '€ 30,00',
+        description: 'Selezione di 24 pezzi con 6 gusti diversi scelti dallo chef.',
+        allergens: ['fish', 'crustaceans', 'soy', 'gluten', 'eggs', 'milk', 'mustard', 'sesame']
+      },
+      {
+        name: 'Uramaki Set 40pz',
+        price: '€ 50,00',
+        description: 'Selezione di 40 pezzi con 10 gusti diversi scelti dallo chef.',
+        allergens: ['fish', 'crustaceans', 'soy', 'gluten', 'eggs', 'milk', 'mustard', 'sesame']
+      },
       {
         name: 'Philadelphia (8pz)',
         price: '€ 9,00',
@@ -258,7 +258,7 @@ export const menuData: MenuSectionData[] = [
       },
       {
         name: 'Sake Nikkei (8pz)',
-        price: '€ 12,00',
+        price: '€ 10,00',
         description: 'Salmone cotto e philadelphia, coperto di salmone scottato, salsa agrodolce e teriyaki.',
         allergens: ['fish', 'milk', 'soy', 'gluten']
       },
@@ -271,151 +271,8 @@ export const menuData: MenuSectionData[] = [
     ]
   },
   {
-    id: 'section-signature',
-    title: 'Uramaki Signature',
-    icon: 'diamond',
-    bgClass: 'bg-cream washi-overlay',
-    items: [
-      {
-        name: 'Ichigo Okoku (8pz)',
-        price: '€ 20,00',
-        description: 'Ricciola, shiso e cetrioli, esterno carpaccio gambero rosso, tartare di fragole con pepe e gocce di aceto balsamico tradizionale di modena dop.',
-        isGlutenFree: true,
-        allergens: ['fish', 'crustaceans']
-      },
-      {
-        name: 'Shio Sake (8pz)',
-        price: '€ 16,00',
-        description: 'Salmone marinato, avocado e ikura, sopra carpaccio di salmone marinato, mayo all\'aneto e chips di topinambur.',
-        isGlutenFree: true,
-        allergens: ['fish', 'eggs', 'mustard']
-      },
-      {
-        name: 'Maguro Tate (8pz)',
-        price: '€ 22,00',
-        description: 'Akami di tonno, erba cipollina, sopra carpaccio scottato di capasanta, ponzu e tartufo nero pregiato(selezione lady truffle).',
-        allergens: ['fish', 'molluscs', 'soy', 'gluten']
-      }
-    ]
-  },
-  {
-    id: 'section-tartare',
-    title: 'Tartare & Carpacci',
-    icon: 'set_meal',
-    bgClass: 'bg-sage-50',
-    items: [
-      {
-        name: 'Tartare di Salmone',
-        price: '€ 9,00',
-        description: 'Avocado, salmone, salsa ponzu, olio E.V.O., furikake vegetale.',
-        allergens: ['fish', 'soy', 'sesame', 'gluten']
-      },
-      {
-        name: 'Tartare di Tonno',
-        price: '€ 10,00',
-        description: 'Avocado, salsa ponzu, olio di sesamo e sesamo.',
-        allergens: ['fish', 'soy', 'sesame', 'gluten']
-      },
-      {
-        name: 'Tartare di Ricciola',
-        price: '€ 13,00',
-        description: 'Avocado, salsa ponzu, olio E.V.O., zest di lime.',
-        allergens: ['fish', 'soy', 'gluten']
-      },
-      {
-        name: 'Carpaccio di Salmone (9pz)',
-        price: '€ 9,00',
-        description: 'Salsa ponzu, olio E.V.O., sale Maldon.',
-        allergens: ['fish', 'soy', 'gluten']
-      },
-      {
-        name: 'Carpaccio di Orata o Spigola',
-        price: '€ 9,00',
-        description: 'Salsa ponzu, olio E.V.O., sale Maldon.',
-        allergens: ['fish', 'soy', 'gluten']
-      },
-      {
-        name: 'Carpaccio Misto (9pz)',
-        price: '€ 10,00',
-        description: 'Salsa ponzu, olio E.V.O., sale Maldon.',
-        allergens: ['fish', 'soy', 'gluten']
-      }
-    ]
-  },
-  {
-    id: 'section-sashimi',
-    title: 'Sashimi',
-    icon: 'phishing',
-    bgClass: 'bg-cream washi-overlay',
-    items: [
-      {
-        name: 'Sashimi Misto (6pz)',
-        price: '€ 9,00',
-        description: 'Selezione mista dello chef.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Sashimi Misto (12pz)',
-        price: '€ 17,00',
-        description: 'Selezione mista dello chef.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Sashimi Misto (24pz)',
-        price: '€ 33,00',
-        description: 'Selezione mista dello chef.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Sashimi Salmone (4pz)',
-        price: '€ 5,50',
-        description: 'Taglio pregiato di salmone.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Sashimi Tonno (4pz)',
-        price: '€ 6,00',
-        description: 'Taglio pregiato di tonno.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Sashimi Ricciola (4pz)',
-        price: '€ 7,00',
-        description: 'Taglio pregiato di ricciola.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Shiromi (4pz)',
-        price: '€ 7,00',
-        description: 'Pescato locale bianco del giorno.',
-        isGlutenFree: true,
-        allergens: ['fish']
-      },
-      {
-        name: 'Gambero Blu (1pz)',
-        price: '€ 4,00',
-        description: 'Gambero blu della Nuova Caledonia.',
-        isGlutenFree: true,
-        allergens: ['crustaceans']
-      },
-      {
-        name: 'Gambero Rosso (1pz)',
-        price: '€ 6,00',
-        description: 'Gambero rosso di Mazara.',
-        isGlutenFree: true,
-        allergens: ['crustaceans']
-      }
-    ]
-  },
-  {
     id: 'section-nigiri',
-    title: 'Nigiri & Hosomaki',
+    title: 'Nigiri',
     icon: 'radio_button_checked',
     bgClass: 'bg-sage-50',
     items: [
@@ -490,7 +347,15 @@ export const menuData: MenuSectionData[] = [
         description: 'Su disponibilità.',
         isGlutenFree: true,
         allergens: ['fish']
-      },
+      }
+    ]
+  },
+  {
+    id: 'section-hosomaki',
+    title: 'Hosomaki',
+    icon: 'view_week',
+    bgClass: 'bg-white',
+    items: [
       {
         name: 'Hosomaki Salmone (6pz)',
         price: '€ 5,00',
@@ -522,17 +387,89 @@ export const menuData: MenuSectionData[] = [
         isVegetarian: true,
         isGlutenFree: true
       },
-       {
+      {
         name: 'Hosomaki Cetriolo (6pz)',
         price: '€ 4,00',
-        description: 'Cetriolo, shiso e sesamo.',
+        description: 'Cetriolo e sesamo.',
         isVegetarian: true,
         isGlutenFree: true,
         allergens: ['sesame']
       }
     ]
   },
+
   {
+    id: 'section-sashimi',
+    title: 'Sashimi',
+    icon: 'phishing',
+    bgClass: 'bg-cream washi-overlay',
+    items: [
+      {
+        name: 'Sashimi Misto (6pz)',
+        price: '€ 9,00',
+        description: 'Selezione mista dello chef.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Sashimi Misto (12pz)',
+        price: '€ 18,00',
+        description: 'Selezione mista dello chef.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Sashimi Misto (24pz)',
+        price: '€ 36,00',
+        description: 'Selezione mista dello chef.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Sashimi Salmone (4pz)',
+        price: '€ 5,50',
+        description: 'Taglio pregiato di salmone.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Sashimi Tonno (4pz)',
+        price: '€ 6,00',
+        description: 'Taglio pregiato di tonno.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Sashimi Ricciola (4pz)',
+        price: '€ 7,00',
+        description: 'Taglio pregiato di ricciola.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Shiromi (4pz)',
+        price: '€ 7,00',
+        description: 'Pescato locale bianco del giorno.',
+        isGlutenFree: true,
+        allergens: ['fish']
+      },
+      {
+        name: 'Gambero Blu (1pz)',
+        price: '€ 4,00',
+        description: 'Gambero blu della Nuova Caledonia.',
+        isGlutenFree: true,
+        allergens: ['crustaceans']
+      },
+      {
+        name: 'Gambero Rosso (1pz)',
+        price: '€ 6,00',
+        description: 'Gambero rosso di Mazara.',
+        isGlutenFree: true,
+        allergens: ['crustaceans']
+      }
+    ]
+  },
+{
     id: 'section-temaki',
     title: 'Temaki',
     icon: 'icecream',
@@ -574,6 +511,50 @@ export const menuData: MenuSectionData[] = [
         description: 'Gambero in tempura e salsa piccante.',
         isSpicy: true,
         allergens: ['crustaceans', 'gluten', 'eggs', 'sesame']
+      }
+    ]
+  },
+  {
+    id: 'section-tartare',
+    title: 'Tartare & Carpacci',
+    icon: 'set_meal',
+    bgClass: 'bg-sage-50',
+    items: [
+      {
+        name: 'Tartare di Salmone',
+        price: '€ 9,00',
+        description: 'Avocado, salmone, salsa ponzu, olio E.V.O., furikake vegetale.',
+        allergens: ['fish', 'soy', 'sesame', 'gluten']
+      },
+      {
+        name: 'Tartare di Tonno',
+        price: '€ 10,00',
+        description: 'Avocado, salsa ponzu, olio di sesamo e sesamo.',
+        allergens: ['fish', 'soy', 'sesame', 'gluten']
+      },
+      {
+        name: 'Tartare di Ricciola',
+        price: '€ 13,00',
+        description: 'Avocado, salsa ponzu, olio E.V.O., zest di lime.',
+        allergens: ['fish', 'soy', 'gluten']
+      },
+      {
+        name: 'Carpaccio di Salmone (9pz)',
+        price: '€ 9,00',
+        description: 'Salsa ponzu, olio E.V.O., sale Maldon.',
+        allergens: ['fish', 'soy', 'gluten']
+      },
+      {
+        name: 'Carpaccio di Orata o Spigola',
+        price: '€ 9,00',
+        description: 'Salsa ponzu, olio E.V.O., sale Maldon.',
+        allergens: ['fish', 'soy', 'gluten']
+      },
+      {
+        name: 'Carpaccio Misto (9pz)',
+        price: '€ 10,00',
+        description: 'Salsa ponzu, olio E.V.O., sale Maldon.',
+        allergens: ['fish', 'soy', 'gluten']
       }
     ]
   },

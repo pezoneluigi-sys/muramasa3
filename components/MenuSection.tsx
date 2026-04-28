@@ -24,7 +24,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ data, isLast }) => {
           {data.title.toUpperCase()}
         </h4>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {data.items.map((item, index) => {
             const quantity = getItemQuantity(item.name);
             
@@ -36,86 +36,88 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ data, isLast }) => {
             if (item.isSpicy) statusIcons.push({ icon: 'local_fire_department', title: 'Piccante' });
             
             return (
-              <div key={index}>
-                <div className="flex flex-col md:flex-row justify-between md:items-start gap-3">
-                  {/* Left Side: Info */}
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                        {/* Renderizza tutte le icone di stato applicabili */}
-                        {statusIcons.map((status, idx) => (
-                          <span 
-                            key={idx}
-                            className="material-symbols-outlined text-sm text-sage-600"
-                            title={status.title}
-                          >
-                            {status.icon}
-                          </span>
-                        ))}
-                        
-                        <h5 className="text-lg font-bold text-wood-900 mr-2">
-                          {item.name}
-                        </h5>
+              <div 
+                key={index} 
+                className="bg-cream/80 border border-wood-200/50 hover:border-sage-400 p-5 pl-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full relative"
+              >
+                {/* Accent bar sulla sinistra della card */}
+                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-sage-500 rounded-l-2xl opacity-60"></div>
+                
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                      {/* Renderizza tutte le icone di stato applicabili */}
+                      {statusIcons.map((status, idx) => (
+                        <span 
+                          key={idx}
+                          className="material-symbols-outlined text-[18px] bg-wood-100 p-1 rounded-full text-sage-700 shadow-sm"
+                          title={status.title}
+                        >
+                          {status.icon}
+                        </span>
+                      ))}
+                      
+                      <h5 className="text-xl font-bold text-wood-900 mr-2 leading-tight">
+                        {item.name}
+                      </h5>
 
-                        {/* Allergen Icons List */}
-                        {item.allergens && item.allergens.length > 0 && (
-                          <div className="flex items-center gap-1 border-l border-wood-300 pl-2">
-                            {item.allergens.map((allergen) => {
-                              const info = ALLERGEN_MAP[allergen.toLowerCase()];
-                              if (!info) return null;
-                              return (
-                                <span 
-                                  key={allergen}
-                                  className="material-symbols-outlined text-[16px] text-wood-400 cursor-help hover:text-wood-800 transition-colors"
-                                  title={`Allergene: ${info.label}`}
-                                >
-                                  {info.icon}
-                                </span>
-                              );
-                            })}
-                          </div>
-                        )}
-                    </div>
-                    {item.description && (
-                      <p className="text-sm leading-snug max-w-lg text-wood-500 italic">
-                        {item.description}
-                      </p>
-                    )}
+                      {/* Allergen Icons List */}
+                      {item.allergens && item.allergens.length > 0 && (
+                        <div className="flex items-center gap-1 border-l-2 border-sage-200 pl-3 ml-1">
+                          {item.allergens.map((allergen) => {
+                            const info = ALLERGEN_MAP[allergen.toLowerCase()];
+                            if (!info) return null;
+                            return (
+                              <span 
+                                key={allergen}
+                                className="material-symbols-outlined text-[16px] text-wood-400 cursor-help hover:text-wood-800 transition-colors"
+                                title={`Allergene: ${info.label}`}
+                              >
+                                {info.icon}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      )}
                   </div>
+                  {item.description && (
+                     <p className="text-sm leading-relaxed max-w-full text-wood-600 mb-4 opacity-90 line-clamp-3">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
 
-                  {/* Right Side: Price & Controls */}
-                  <div className="flex flex-row md:flex-col items-center md:items-end justify-between gap-4 md:gap-2 mt-2 md:mt-0">
-                    <span className="font-medium text-wood-900 text-lg whitespace-nowrap">{item.price}</span>
-                    
-                    {quantity === 0 ? (
+                {/* Right Side: Price & Controls */}
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-wood-200/40">
+                  <span className="font-bold text-wood-900 text-xl whitespace-nowrap bg-white/50 px-3 py-1 rounded-lg">
+                    {item.price}
+                  </span>
+                  
+                  {quantity === 0 ? (
+                    <button 
+                      onClick={() => addToCart(item)}
+                      className="bg-wood-900 hover:bg-sage-600 text-cream px-5 py-2 rounded-xl text-sm font-bold transition-colors shadow-sm hover:shadow active:scale-95 flex items-center gap-2"
+                    >
+                      <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                      AGGIUNGI
+                    </button>
+                  ) : (
+                    <div className="flex items-center bg-wood-900 rounded-xl p-1.5 shadow-md">
+                      <button 
+                        onClick={() => removeFromCart(item.name)}
+                        className="w-8 h-8 flex items-center justify-center rounded-lg bg-wood-800 text-cream hover:bg-wood-700 transition-colors active:scale-95"
+                      >
+                        <span className="material-symbols-outlined text-[18px]">remove</span>
+                      </button>
+                      <span className="w-10 text-center font-bold text-cream text-lg">{quantity}</span>
                       <button 
                         onClick={() => addToCart(item)}
-                        className="bg-wood-100 hover:bg-sage-200 text-wood-800 px-4 py-1.5 rounded-full text-sm font-bold transition-colors border border-wood-200 shadow-sm flex items-center gap-1"
+                        className="w-8 h-8 flex items-center justify-center rounded-lg bg-sage-500 text-wood-900 hover:bg-sage-400 transition-colors active:scale-95"
                       >
-                        <span className="material-symbols-outlined text-sm">add</span>
-                        AGGIUNGI
+                        <span className="material-symbols-outlined text-[18px]">add</span>
                       </button>
-                    ) : (
-                      <div className="flex items-center bg-wood-900 rounded-full p-1 shadow-md">
-                        <button 
-                          onClick={() => removeFromCart(item.name)}
-                          className="w-7 h-7 flex items-center justify-center rounded-full bg-wood-800 text-cream hover:bg-wood-700 transition-colors"
-                        >
-                          <span className="material-symbols-outlined text-sm">remove</span>
-                        </button>
-                        <span className="w-8 text-center font-bold text-cream text-sm">{quantity}</span>
-                        <button 
-                          onClick={() => addToCart(item)}
-                          className="w-7 h-7 flex items-center justify-center rounded-full bg-sage-500 text-wood-900 hover:bg-sage-400 transition-colors"
-                        >
-                          <span className="material-symbols-outlined text-sm">add</span>
-                        </button>
-                      </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
-                
-                {/* Separator */}
-                <div className="border-b border-dotted border-wood-200 mt-6 w-full opacity-50"></div>
               </div>
             );
           })}

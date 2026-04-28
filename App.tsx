@@ -12,12 +12,10 @@ import { MenuSectionData } from './types';
 import { AllergenLegend } from './components/AllergenLegend';
 import { PrivacyModal } from './components/PrivacyModal';
 import { CookieBanner } from './components/CookieBanner';
-import { OmakaseView } from './components/OmakaseView';
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
-  const [viewMode, setViewMode] = useState<'omakase' | 'alacarta'>('omakase');
   
   // State for Privacy Modal
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -63,43 +61,39 @@ const App: React.FC = () => {
   return (
     <CartProvider>
       <div className="font-sans antialiased smooth-scroll bg-cream pb-20">
-        <Navbar viewMode={viewMode} setViewMode={setViewMode} />
-        <Hero viewMode={viewMode} setViewMode={setViewMode} />
+        <Navbar />
+        <Hero />
 
-        {viewMode === 'alacarta' ? (
-          <>
-            <SearchBar 
-              searchTerm={searchTerm} 
-              setSearchTerm={setSearchTerm}
-              activeFilter={activeFilter}
-              setActiveFilter={setActiveFilter}
-            />
-            <main className="w-full relative z-10 min-h-[400px]">
-              {filteredMenu.length > 0 ? (
-                filteredMenu.map((section, index) => (
-                  <MenuSection 
-                    key={section.id} 
-                    data={section} 
-                    isLast={index === filteredMenu.length - 1} 
-                  />
-                ))
-              ) : (
-                <div className="text-center py-20 opacity-60">
-                  <span className="material-symbols-outlined text-6xl text-wood-300 mb-4">search_off</span>
-                  <p className="text-xl font-serif text-wood-600">Nessun piatto trovato</p>
-                  <button 
-                    onClick={() => { setSearchTerm(''); setActiveFilter('all'); }}
-                    className="mt-4 text-sage-600 underline hover:text-sage-800"
-                  >
-                    Resetta filtri
-                  </button>
-                </div>
-              )}
-            </main>
-          </>
-        ) : (
-          <OmakaseView />
-        )}
+        <>
+          <SearchBar 
+            searchTerm={searchTerm} 
+            setSearchTerm={setSearchTerm}
+            activeFilter={activeFilter}
+            setActiveFilter={setActiveFilter}
+          />
+          <main className="w-full relative z-10 min-h-[400px]">
+            {filteredMenu.length > 0 ? (
+              filteredMenu.map((section, index) => (
+                <MenuSection 
+                  key={section.id} 
+                  data={section} 
+                  isLast={index === filteredMenu.length - 1} 
+                />
+              ))
+            ) : (
+              <div className="text-center py-20 opacity-60">
+                <span className="material-symbols-outlined text-6xl text-wood-300 mb-4">search_off</span>
+                <p className="text-xl font-serif text-wood-600">Nessun piatto trovato</p>
+                <button 
+                  onClick={() => { setSearchTerm(''); setActiveFilter('all'); }}
+                  className="mt-4 text-sage-600 underline hover:text-sage-800"
+                >
+                  Resetta filtri
+                </button>
+              </div>
+            )}
+          </main>
+        </>
 
         <AllergenLegend />
         
